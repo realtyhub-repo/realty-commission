@@ -10,6 +10,7 @@ public record CommissionStatusEvent(
         UUID comisionId,
         UUID contratoId,
         UUID agenteId,
+        UUID gerenteOficinaId,
         EstadoComision estado,
         BigDecimal montoTotal,
         LocalDateTime ocurridoEn
