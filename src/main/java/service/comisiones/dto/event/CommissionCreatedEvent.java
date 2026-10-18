@@ -15,6 +15,7 @@ public record CommissionCreatedEvent(
         UUID agenteId,
         UUID oficinaId,
         UUID centralId,
+        UUID gerenteOficinaId,
         TipoContrato tipoContrato,
         BigDecimal montoTotal,
         List<Reparto> reparto,

@@ -43,6 +43,7 @@ public class ComisionTransiciones {
                 comision.getAgenteId(),
                 comision.getOficinaId(),
                 comision.getCentralId(),
+                comision.getGerenteOficinaId(),
                 comision.getTipoContrato(),
                 comision.getMontoTotal(),
                 reparto,
@@ -71,6 +72,7 @@ public class ComisionTransiciones {
                 comision.getId(),
                 comision.getContratoId(),
                 comision.getAgenteId(),
+                comision.getGerenteOficinaId(),
                 destino,
                 comision.getMontoTotal(),
                 LocalDateTime.now()));
