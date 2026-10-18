@@ -1,3 +1,45 @@
 spring:
   application:
     name: comisiones
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        default-requeue-rejected: false
+        retry:
+          enabled: true
+          initial-interval: 2s
+          multiplier: 2
+          max-interval: 30s
+          max-retries: 5
+  datasource:
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: ${POSTGRES_URL}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8087
+
+servicios:
+  usuarios-url: ${USUARIOS_URL:http://localhost:8082}
+
+comisiones:
+  outbox:
+    intervalo-ms: ${COMISIONES_OUTBOX_INTERVALO_MS:5000}
+    lote: ${COMISIONES_OUTBOX_LOTE:50}
+    confirmacion-ms: ${COMISIONES_OUTBOX_CONFIRMACION_MS:5000}
+    retencion-dias: ${COMISIONES_OUTBOX_RETENCION_DIAS:7}
